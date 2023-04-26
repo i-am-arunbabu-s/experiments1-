@@ -1,0 +1,18 @@
+# ./script_mkimage.sh bootscript bootscript.scr
+# ./tools/mkimage -A arm -O U-Boot -C none -T script -d <your script> debrick.scr
+nand erase.chip
+tftp 0x82000000 ${serverip}:MLO
+nand write 0x82000000 0x0 0x20000
+nand write 0x82000000 0x20000 0x20000
+nand write 0x82000000 0x40000 0x20000
+nand write 0x82000000 0x60000 0x20000
+tftp 0x82000000 ${serverip}:am335x-evm.dtb
+nand write 0x82000000 0x80000 0x40000
+tftp 0x82000000 ${serverip}:u-boot.img
+nand write 0x82000000 0xc0000 0x300000
+tftp 0x82000000 ${serverip}:zImage
+nand write 0x82000000 0x400000 0x800000
+tftp 0x82000000 ${serverip}:core-image-minimal-agappe-20190528095649.rootfs.ubi
+nand write 0x82000000 0xc00000 0xf400000
+saveenv
+run nandboot

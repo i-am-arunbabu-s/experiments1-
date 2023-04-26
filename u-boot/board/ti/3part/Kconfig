@@ -1,0 +1,16 @@
+if TARGET_AM335X_3PART
+
+config SYS_BOARD
+	default "3part"
+
+config SYS_VENDOR
+	default "ti"
+
+config SYS_SOC
+	default "am33xx"
+
+config SYS_CONFIG_NAME
+	default "am335x_3part"
+
+source "board/ti/common/Kconfig"
+endif

@@ -1,0 +1,10 @@
+menu "LCD Support"
+
+config LCD_TCM
+	bool "Enable LCD support"
+	depends on DM
+	help
+	  am335x_3part boards have LCDs which can be used to show the boot screen logo.
+	  Use of the device tree for configuration is encouraged.
+
+endmenu
