@@ -19,5 +19,6 @@
 #include<stdlib.h>
 int main()
 {
+printf("Program to implement Hashing Technique\n");
 }
 
